@@ -29,9 +29,11 @@ tbl7[ , census_year := gsub("[^0-9]", "", census_year)]
 # Add state abbreviations
 data(state)
 stateDT <- data.table(state = state.name,
-                      state_abb = state.abb)
+                      state_abb = state.abb,
+                      state_fips = fips)
 tbl7[stateDT,
-     state_abb := i.state_abb,
+     `:=`(state_abb = i.state_abb,
+          state_fips = i.state_fips),
      on = "state"
      ]
 
