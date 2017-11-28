@@ -1,0 +1,52 @@
+state,fips,year,pop
+Alabama,01,1800,1250
+Alaska,02,1800,
+Arizona,04,1800,
+Arkansas,05,1800,
+California,06,1800,
+Colorado,08,1800,
+Connecticut,09,1800,251002
+Delaware,10,1800,64273
+District of Columbia,11,1800,8144
+Florida,12,1800,
+Georgia,13,1800,162686
+Hawaii,15,1800,
+Idaho,16,1800,
+Illinois,17,1800,2458
+Indiana,18,1800,2632
+Iowa,19,1800,
+Kansas,20,1800,
+Kentucky,21,1800,220955
+Louisiana,22,1800,
+Maine,23,1800,151719
+Maryland,24,1800,341548
+Massachusetts,25,1800,422845
+Michigan,26,1800,3757
+Minnesota,27,1800,
+Mississippi,28,1800,7600
+Missouri,29,1800,
+Montana,30,1800,
+Nebraska,31,1800,
+Nevada,32,1800,
+New Hampshire,33,1800,183858
+New Jersey,34,1800,211149
+New Mexico,35,1800,
+New York,36,1800,589051
+North Carolina,37,1800,478103
+North Dakota,38,1800,
+Ohio,39,1800,42159
+Oklahoma,40,1800,
+Oregon,41,1800,
+Pennsylvania,42,1800,602365
+Rhode Island,44,1800,69122
+South Carolina,45,1800,345591
+South Dakota,46,1800,
+Tennessee,47,1800,105602
+Texas,48,1800,
+Utah,49,1800,
+Vermont,50,1800,154465
+Virginia,51,1800,807557
+Washington,53,1800,
+West Virginia,54,1800,78592
+Wisconsin,55,1800,
+Wyoming,56,1800,
