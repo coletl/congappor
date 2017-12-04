@@ -1,10 +1,3 @@
-rm(list = ls())
-gc()
-
-# Cole Tanigawa-Lau
-# Wed Aug  9 10:30:33 2017
-# Description: Download census population data.
-
 # This script requires a U.S. Census API key.
 # You can register for one here: http://api.census.gov/data/key_signup.html.
 # Add your personal API key to the environment with:
@@ -13,46 +6,56 @@ gc()
 
 library(data.table)
 library(censusapi)
+library(readxl)
+library(readr)
 
 source("data-raw/functions.R")
 
-pop <- fread("https://www.census.gov/population/www/censusdata/Population_PartII.txt",
-             na.strings = "---")
-# Remove unnecessary rows and columns
-pop2 <- pop[-1:-8,
-            -23:-24
-            ][-52:-53]
-setnames(pop2,
-         c("state",
-           seq(1990, 1790, -10),
-           "fips")
-)
-# Remove commas from population figures
-pop2[ ,
-      (as.character(
-        seq(1990, 1790, -10
-        ))
-      ) := lapply(.SD, function(x) as.numeric(gsub(",", "", x))),
-      .SDcols = as.character(seq(1990, 1790, -10))
-      ]
-pop3 <- melt(pop2, id.vars = c("state", "fips"), variable.name = "year", value.name = "pop")
-popl <- split(pop3, pop3$year)
+# Download and clean 1990 apportionment population data ----
+tmp <- tempfile(fileext = ".xls")
+download.file("http://www2.census.gov/programs-surveys/decennial/1990/data/apportionment/taba.xls",
+              tmp)
+pop1990 <- read_excel(tmp, skip = 3)
 
-pop2000 <- getCensus(name = "sf1", vintage = 2000, vars = "P001001", region = "state")
+# Clean
+setDT(pop1990)
+setnames(pop1990,
+         c("state", "seats", "pop", "resident", "overseas"))
+        # Remove US and NA rows
+pop1990b <- pop1990[c(-1:-3, -55:-56),
+                    ][,
+                       state := str_extract(state, "[[:alpha:] ]+")
+                       ][state != "District of Columbia"
+                         ]
+# Download and clean 2000 apportionment population data ----
+pop2000 <- read_fwf("https://www.census.gov/population/www/cen2000/maps/files/tab01.txt",
+                    col_positions = fwf_cols(state = 31, pop = 25, seats = 16, seats_change = 2),
+                    skip = 6)
+# Clean, remove unnecessary rows and column
 setDT(pop2000)
-setnames(pop2000, c("fips", "pop"))
+pop2000[ ,
+         names(pop2000) := lapply(.SD, str_trim)
+         ]
 
-pop2000[ , year := 2000]
-popl$`2000` <- pop2000[popl[[1]], state := state, on = "fips"]
+pop2000b <- pop2000[c(-1:-2, -53:-68),
+                    c("state", "pop", "seats")
+                    ][ ,
+                       pop := as.numeric(gsub(",", "", pop, fixed = TRUE))
+                       ]
 
-pop2010 <- getCensus(name = "sf1", vintage = 2010, vars = "P0010001", region = "state")
+# Download and clean 2010 apportionment population data ----
+download.file("https://www.census.gov/population/apportionment/files/Apportionment%20Population%202010.xls",
+              tmp)
+pop2010 <- read_excel(tmp, skip = 8)[c(-1:-2, -53:-58),
+                                     c(-3, -5)
+                                     ]
 setDT(pop2010)
-setnames(pop2010, c("fips", "pop"))
+setnames(pop2010,
+         c("state", "pop", "seats", "seats_change"))
 
-pop2010[ , year := 2010]
-# Remove Puerto Rico
-popl$`2010` <- pop2010[popl[[1]], state := state, on = "fips"]
-popl$`2010` <- popl$`2010`[fips != "72"]
+popl <- list()
+popl[c("1990", "2000", "2010")] <-
+  list(pop1990b, pop2000b, pop2010)
 
 setattr(popl, "names",
         paste0("pop", names(popl)))
