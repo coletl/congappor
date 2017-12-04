@@ -1,14 +1,7 @@
-# This script requires a U.S. Census API key.
-# You can register for one here: http://api.census.gov/data/key_signup.html.
-# Add your personal API key to the environment with:
-# Sys.setenv(CENSUS_KEY = your_api_key)
-# readRenviron(".Renviron")
-
-
 library(data.table)
-library(censusapi)
 library(readxl)
 library(readr)
+library(stringr)
 
 source("data-raw/functions.R")
 
@@ -33,8 +26,13 @@ pop2[ ,
       ]
 pop3 <- melt(pop2, id.vars = c("state", "fips"), variable.name = "year", value.name = "pop")
 # Remove 1990, which we download separately
-pop4 <- pop3[year != "1990"]
+pop4 <- pop3[! year %in% c("1970", "1990")]
 popl <- split(pop4, pop4$year)
+
+# Change out for correct 1970 apportionment figures
+# Manually entered from: https://www.census.gov/population/www/socdemo/overseas/techn62-4.pdf
+pop1970 <- fread("data-raw/pop1970_manual-entry.csv")
+popl$`1970` <- pop1970
 
 # Download and clean 1990 apportionment population data ----
 tmp <- tempfile(fileext = ".xls")

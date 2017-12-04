@@ -29,12 +29,15 @@ tbl7[ , census_year := gsub("[^0-9]", "", census_year)]
 # Add state abbreviations
 data(state)
 stateDT <- data.table(state = state.name,
-                      state_abb = state.abb,
-                      state_fips = fips)
+                      state_abb = state.abb)
 tbl7[stateDT,
-     `:=`(state_abb = i.state_abb,
-          state_fips = i.state_fips),
+     `:=`(state_abb = i.state_abb),
      on = "state"
+     ]
+
+# Change AK and HI 1950 apportionments to NA (not states at time of census).
+tbl7[state_abb %in% c("AK", "HI") & census_year == "1950",
+     congr_seats := NA
      ]
 
 seats10 <- tbl7[ , .(state, state_abb, census_year, congr_seats)]
