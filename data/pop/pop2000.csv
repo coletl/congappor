@@ -1,51 +1,51 @@
-state,pop,seats
-Alabama,4461130,7
-Alaska,628933,1
-Arizona,5140683,8
-Arkansas,2679733,4
-California,33930798,53
-Colorado,4311882,7
-Connecticut,3409535,5
-Delaware,785068,1
-Florida,16028890,25
-Georgia,8206975,13
-Hawaii,1216642,2
-Idaho,1297274,2
-Illinois,12439042,19
-Indiana,6090782,9
-Iowa,2931923,5
-Kansas,2693824,4
-Kentucky,4049431,6
-Louisiana,4480271,7
-Maine,1277731,2
-Maryland,5307886,8
-Massachusetts,6355568,10
-Michigan,9955829,15
-Minnesota,4925670,8
-Mississippi,2852927,4
-Missouri,5606260,9
-Montana,905316,1
-Nebraska,1715369,3
-Nevada,2002032,3
-New Hampshire,1238415,2
-New Jersey,8424354,13
-New Mexico,1823821,3
-New York,19004973,29
-North Carolina,8067673,13
-North Dakota,643756,1
-Ohio,11374540,18
-Oklahoma,3458819,5
-Oregon,3428543,5
-Pennsylvania,12300670,19
-Rhode Island,1049662,2
-South Carolina,4025061,6
-South Dakota,756874,1
-Tennessee,5700037,9
-Texas,20903994,32
-Utah,2236714,3
-Vermont,609890,1
-Virginia,7100702,11
-Washington,5908684,9
-West Virginia,1813077,3
-Wisconsin,5371210,8
-Wyoming,495304,1
+state,pop,seats,year
+Alabama,4461130,7,2000
+Alaska,628933,1,2000
+Arizona,5140683,8,2000
+Arkansas,2679733,4,2000
+California,33930798,53,2000
+Colorado,4311882,7,2000
+Connecticut,3409535,5,2000
+Delaware,785068,1,2000
+Florida,16028890,25,2000
+Georgia,8206975,13,2000
+Hawaii,1216642,2,2000
+Idaho,1297274,2,2000
+Illinois,12439042,19,2000
+Indiana,6090782,9,2000
+Iowa,2931923,5,2000
+Kansas,2693824,4,2000
+Kentucky,4049431,6,2000
+Louisiana,4480271,7,2000
+Maine,1277731,2,2000
+Maryland,5307886,8,2000
+Massachusetts,6355568,10,2000
+Michigan,9955829,15,2000
+Minnesota,4925670,8,2000
+Mississippi,2852927,4,2000
+Missouri,5606260,9,2000
+Montana,905316,1,2000
+Nebraska,1715369,3,2000
+Nevada,2002032,3,2000
+New Hampshire,1238415,2,2000
+New Jersey,8424354,13,2000
+New Mexico,1823821,3,2000
+New York,19004973,29,2000
+North Carolina,8067673,13,2000
+North Dakota,643756,1,2000
+Ohio,11374540,18,2000
+Oklahoma,3458819,5,2000
+Oregon,3428543,5,2000
+Pennsylvania,12300670,19,2000
+Rhode Island,1049662,2,2000
+South Carolina,4025061,6,2000
+South Dakota,756874,1,2000
+Tennessee,5700037,9,2000
+Texas,20903994,32,2000
+Utah,2236714,3,2000
+Vermont,609890,1,2000
+Virginia,7100702,11,2000
+Washington,5908684,9,2000
+West Virginia,1813077,3,2000
+Wisconsin,5371210,8,2000
+Wyoming,495304,1,2000
