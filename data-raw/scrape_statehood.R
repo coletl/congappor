@@ -16,3 +16,4 @@ statehood <- data.table(state,
                         date = as.Date(date, "%b %d, %Y"))
 
 devtools::use_data(statehood)
+devtools::use_data(statehood, internal = TRUE)

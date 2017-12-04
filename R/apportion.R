@@ -19,7 +19,7 @@ apportion <-
     if(! PR_seats) pop_data <- pop_data[state != "Puerto Rico"]
 
     if(!is.null(apportion_year) || states != 50) {
-      load("data/statehood.rda")
+      data("statehood")
       apportion_jan <- as.Date(paste(apportion_year, "01", "01", sep = "-"))
 
       valid_states <- statehood[date < apportion_jan]
