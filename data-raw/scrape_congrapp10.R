@@ -37,5 +37,10 @@ tbl7[stateDT,
      on = "state"
      ]
 
+# Change AK and HI 1950 apportionments to NA (not states at time of census).
+tbl7[state_abb %in% c("AK", "HI") & census_year == "1950",
+     congr_seats := NA
+     ]
+
 seats10 <- tbl7[ , .(state, state_abb, census_year, congr_seats)]
 devtools::use_data(seats10)
