@@ -38,4 +38,4 @@ tbl7[stateDT,
      ]
 
 seats10 <- tbl7[ , .(state, state_abb, census_year, congr_seats)]
-devtools::use_data(seats10, overwrite = TRUE)
+devtools::use_data(seats10)
