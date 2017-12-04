@@ -14,7 +14,7 @@ names(popl) <- gsub(".csv", repl = "", list.files("data/pop/")[16:23], fixed = T
 
 apportion_test <- mapply(apportion,
                          pop_data = popl,
-                         apportion_year = as.numeric(str_extract(names(popl), "[0-9]{4}")),
+                         apportion_year = str_extract(names(popl), "[0-9]{4}"),
                          SIMPLIFY = FALSE)
 apportion_test
 apportionDT <- rbindlist(apportion_test,

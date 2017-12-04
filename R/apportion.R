@@ -1,3 +1,5 @@
+#' @import data.table
+
 apportion <-
   function(pop_data,
            max_seats = 435, # Maximum number of voting seats in the hypothetical congress. This number was fixed at the default (435) in 1911.
@@ -10,8 +12,6 @@ apportion <-
            store_priority = FALSE
            ){
     # Equation from: https://www.census.gov/population/apportionment/about/computing.html
-
-    require(data.table)
 
     if(!is.data.table(pop_data)) setDT(pop_data)
 
