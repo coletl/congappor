@@ -2,7 +2,7 @@
 
 apportion <-
   function(pop_data,
-           max_seats = 435, # Maximum number of voting seats in the hypothetical congress. This number was fixed at the default (435) in 1911.
+           total_seats = 435, # Total number of voting seats in the hypothetical congress. This number was fixed at the default (435) in 1911.
            apportion_year = NULL, # Year of apportionment to simulate, affects only number of states in the union. Overrides `states` parameter.
            # Currently, `apportion()` supports only the method of equal proportions, used only since 1940.
            states = 50, # Number of states.
@@ -27,11 +27,11 @@ apportion <-
       valid_states <- pop_data
       }
 
-    rem_seats <- max_seats - min_seats * (nrow(valid_states) + DC_seats + PR_seats)
+    rem_seats <- total_seats - min_seats * (nrow(valid_states) + DC_seats + PR_seats)
 
     # Compute multipliers
     # n = number of seats, if the state were to gain a seat (seats + 1)
-    n <- (1:max_seats)[1:rem_seats]
+    n <- (1:total_seats)[1:rem_seats]
     mult <- 1/sqrt(n * (n - 1))
 
     # Fill seats
