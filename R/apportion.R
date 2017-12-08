@@ -9,7 +9,8 @@ apportion <-
            DC_seats = FALSE, # Whether DC should be eligible for voting seats in congress.
            PR_seats = FALSE, # Whether Puerto Rico should be eligible for voting seats in congress.
            min_seats = 1, # Minimum (starting) number of seats per state.,
-           store_priority = FALSE
+           store_priority = FALSE, # Store, as a data.table in the enclosing environment, priority scores calculated for each seat.
+           store_seat_order = FALSE, # # Store, as a character vector in the enclosing environment, state names in the order that seats were allocated.
            ){
     # Equation from: https://www.census.gov/population/apportionment/about/computing.html
 
@@ -40,13 +41,17 @@ apportion <-
               ]
     priority <- as.list(rep(NA_real_, rem_seats))
     max_priority <- numeric()
+    state <- character()
 
     for(seat in 1:rem_seats) {
       priority[[seat]] <- pop_data$pop * mult[ pop_data$seats + 1 ]
       max_priority[seat] <- max(priority[[seat]])
 
+      which_state <- which.max(priority[[seat]])
+      state[[seat]] <- pop_data$state[which_state]
+
       pop_data[
-        which.max(priority[[seat]]),
+        which_state,
         seats := seats + 1
         ]
     }
@@ -59,6 +64,10 @@ apportion <-
       setnames(priority_scores,
                c("state", paste0("priority", 1:length(priority)))
                )
+    }
+
+    if(store_seat_order) {
+      seat_order <<- state
     }
 
     return(out)
