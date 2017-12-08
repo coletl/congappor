@@ -10,7 +10,7 @@ apportion <-
            PR_seats = FALSE, # Whether Puerto Rico should be eligible for voting seats in congress.
            min_seats = 1, # Minimum (starting) number of seats per state.,
            store_priority = FALSE, # Store, as a data.table in the enclosing environment, priority scores calculated for each seat.
-           store_seat_order = FALSE, # # Store, as a character vector in the enclosing environment, state names in the order that seats were allocated.
+           store_seat_order = FALSE # Store, as a character vector in the enclosing environment, state names in the order that seats were allocated.
            ){
     # Equation from: https://www.census.gov/population/apportionment/about/computing.html
 
