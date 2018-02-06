@@ -16,4 +16,7 @@ according to each state's population. Journalist Felicity Barringer analogizes t
 > In the early rounds, it is easy for the more populous states to push to the front of the line for seconds and thirds; 
 > in the later rounds, they have trouble squeezing through the narrowing entry, and the less populous states can slip in ahead.
 
-This small package is meant to assist in calculating the apportionment of seats given states' population values.
+This small package is meant to assist in calculating the apportionment of seats given states' population values. To install it:
+
+    # install.packages("devtools")
+    devtools::install_github("coletl/congappor")
