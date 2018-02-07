@@ -1,4 +1,4 @@
-# congappor: Calculate U.S. Congressional Apportionment in R
+# congappor: Simulating U.S. Congressional Apportionment in R
 
 The Constitution of the United States requires that seats in the House of Representatives be reapportioned decennially 
 to align with population figures from the U.S. Census Bureau.
