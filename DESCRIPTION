@@ -1,7 +1,7 @@
 Package: congappor
 Type: Package
 Title: Calculate U.S. Congressional Apportionment in R
-Version: 0.1.0
+Version: 0.1.1
 Author: person("Cole", "Tangiawa-Lau", email = "coletl@nyu.edu", role = c("aut", "cre"))
 Maintainer: Cole Tanigawa-Lau <coletl@nyu.edu>
 Description: Data and a function to calculate (or simulate) 
