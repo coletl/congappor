@@ -56,13 +56,17 @@ apportion <-
       valid_states <- statehood[date < apportion_jan]
     } else {
       valid_states <- pop_data
-      }
+    }
+
+    valid_states[ ,
+                  state := toupper(state)
+                  ]
 
     rem_seats <- total_seats - min_seats * (nrow(valid_states) + DC_seats + PR_seats + GU_seats)
 
     # Compute multipliers
     # n = number of seats, if the state were to gain a seat (seats + 1)
-    n <- (1:total_seats)[1:rem_seats]
+    n <- 1:rem_seats
     mult <- 1/sqrt(n * (n - 1))
 
     # Fill seats
